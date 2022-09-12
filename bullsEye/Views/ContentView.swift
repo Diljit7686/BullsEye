@@ -69,12 +69,19 @@ struct ContentView: View {
        
         .padding(22.0)
         .background(ZStack {
+            
             Color("buttonColor")
+            
             LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0.3), Color.blue]), startPoint: .top, endPoint: .bottom)
         }
         )
         .foregroundColor(Color.white)
         .cornerRadius(21.0)
+        .overlay(
+            RoundedRectangle(cornerRadius: 21.0)
+                .strokeBorder(Color.white, lineWidth: 2.0)
+        
+        )
 
         .alert(isPresented: $alertIsVisible, content:
                 {
