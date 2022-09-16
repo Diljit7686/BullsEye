@@ -25,6 +25,7 @@ class bullsEyeTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
+   
     
     func testScorePositive ()
     {
@@ -78,4 +79,12 @@ class bullsEyeTests: XCTestCase {
         }
     }
 
+     func testNewRound()
+    {
+        game.startNewRound(points: 100)
+        XCTAssertEqual(game.score, 100)
+        XCTAssertEqual(game.round, 2)
+    }
+    
+    
 }

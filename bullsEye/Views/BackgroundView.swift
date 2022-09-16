@@ -13,7 +13,7 @@ struct BackgroundView: View {
     var body: some View {
         VStack{
             TopView(game: $game)
-            
+            Spacer()
             BottomView(game: $game)
         }
         .padding()
@@ -44,8 +44,14 @@ struct NumberView: View {
     var text: String
     
     var body: some View{
-        Color.gray
-            .frame(width: 56.0, height: 56.0)
+        VStack(spacing: 10)
+        {
+            LabelText(text: title.uppercased())
+            
+            RoundRectTextView(text: text)
+            
+            
+        }
     }
 }
 
@@ -56,16 +62,17 @@ struct BottomView: View {
         HStack(){
             NumberView(title: "Score", text: String(game.score))
             
-           Spacer()
+            Spacer()
             NumberView(title: "Round", text: String(game.round))
             
         }
     }
-}
-
-
-struct BackgroundView_Previews: PreviewProvider {
-    static var previews: some View {
-        BackgroundView(game: .constant(Game()))
+    
+    
+    
+    struct BackgroundView_Previews: PreviewProvider {
+        static var previews: some View {
+            BackgroundView(game: .constant(Game()))
+        }
     }
 }

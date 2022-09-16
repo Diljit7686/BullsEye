@@ -60,6 +60,7 @@ struct ContentView: View {
         Button(action: {
              print("Hello SwiftUI")
                 self.alertIsVisible = true
+            game.startNewRound(points: game.points(sliderValue: Int(sliderValue)))
         })
         {
         Text("HIT ME")
