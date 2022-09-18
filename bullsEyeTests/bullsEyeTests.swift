@@ -42,33 +42,23 @@ class bullsEyeTests: XCTestCase {
     }
     
     
-    /*
-     difference =  target - sliderValue
-     if difference == negative
-     {
-     convert negative to positive and assign final value to difference
-     }
-     
-     or
-     if difference == negative
-     {
-    var new = sliderValue - target
-     difference == new   if difference == negative
-     }
-     
-     */
+    func testScoreExact ()
+    {
+        let guess = game.target
+        let score = game.points(sliderValue: guess)
+        XCTAssertEqual(score, 200)
+    }
+    
+    func testScoreClose ()
+    {
+        let guess = game.target + 2
+        let score = game.points(sliderValue: guess)
+        XCTAssertEqual(score, 98 + 50)
+    }
+    
     
     func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-        
-        
-      //  XCTAssertEqual(game.points(sliderValue: 50), 999)
-   
-        
+       
         
     }
 
@@ -85,6 +75,18 @@ class bullsEyeTests: XCTestCase {
         XCTAssertEqual(game.score, 100)
         XCTAssertEqual(game.round, 2)
     }
+    
+    func testRestart()
+   {
+       game.startNewRound(points: 100)
+       XCTAssertNotEqual(game.score, 0)
+       XCTAssertNotEqual(game.round, 1)
+       game.restart()
+       XCTAssertEqual(game.score, 0)
+       XCTAssertEqual(game.round, 1)
+     
+       
+   }
     
     
 }
