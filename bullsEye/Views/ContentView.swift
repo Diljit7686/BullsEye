@@ -22,9 +22,11 @@ struct ContentView: View {
             
      VStack {
                instructionView(game: $game)
-         sliderView(sliderValue: $sliderValue)
+             .padding(.bottom, 100)
+         
          hitMeButton(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
          }
+            sliderView(sliderValue: $sliderValue)
     }
 }
                  struct instructionView: View{
@@ -45,7 +47,7 @@ struct ContentView: View {
              VStack{
                 HStack {
                  oneText(text: "1")
-                 Slider(value: self.$sliderValue, in: 1.0...100.0)
+                    Slider(value: self.$sliderValue, in: 1.0...100.0)
                  hundredText(text: "100")
     }
        }
